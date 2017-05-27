@@ -1,6 +1,7 @@
 #ifndef OBSERVER_OBSERVER_CLASS_HPP
 #define OBSERVER_OBSERVER_CLASS_HPP
 #include <iostream>
+#include "Subject.hpp"
 
 class Observer
 {
@@ -10,7 +11,7 @@ public:
     ~Observer(void);
     Observer &operator=(Observer const & src);
 
-    void        update(void);
+    void        update(void *subject);
 
     Observer    * next;
 };

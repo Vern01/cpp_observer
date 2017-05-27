@@ -31,7 +31,21 @@ void    Subject::notify_observer() {
     Observer * temp = this->_ob;
     std::cout << "Observers are being notified." << std::endl;
     while (temp) {
-        temp->update();
+        temp->update(this);
         temp = temp->next;
+    }
+}
+
+void    Subject::remove_observer(Observer &observer) {
+    Observer * temp = this->_ob;
+    Observer * prev;
+    std::cout << "Removing observer." << std::endl;
+    while (temp && temp != &observer) {
+        prev = temp;
+        temp = temp->next;
+    }
+    if (temp) {
+        prev->next = observer.next;
+        delete observer;
     }
 }

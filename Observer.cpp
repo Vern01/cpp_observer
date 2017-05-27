@@ -15,6 +15,8 @@ Observer& Observer::operator=(Observer const &src) {
     return *this;
 }
 
-void    Observer::update() {
+void    Observer::update(void *subject) {
+    Subject s = subject;
     std::cout << "Observer being updated." << std::endl;
+    s->remove_observer(this);
 }
